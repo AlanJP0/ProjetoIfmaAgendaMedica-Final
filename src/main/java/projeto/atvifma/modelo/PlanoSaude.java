@@ -4,15 +4,14 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "medicamento")
-public class Medicamento {
-
+@Table(name = "plano_saude")
+public class PlanoSaude {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
 
-    public Medicamento() {
+    public PlanoSaude() {
     }
 
     public Integer getId() {
@@ -35,19 +34,18 @@ public class Medicamento {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Medicamento that = (Medicamento) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(nome, that.nome);
+        PlanoSaude that = (PlanoSaude) o;
+        return id.equals(that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome);
+        return Objects.hash(id);
     }
 
     @Override
     public String toString() {
-        return "Medicamento{" +
+        return "PlanoSaude{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 '}';

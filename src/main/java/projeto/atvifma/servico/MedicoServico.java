@@ -8,11 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import projeto.atvifma.modelo.Medico;
 import projeto.atvifma.repositorio.MedicoRepositorio;
 
 
-
+@RestController
+@RequestMapping("/medicos")
 public class MedicoServico {
 
     private final MedicoRepositorio medicoRepository;
@@ -40,7 +43,7 @@ public class MedicoServico {
     }
 
     @Transactional
-    public void excluiPor(Integer id) {
+    public void excluiPor (Integer id) {
         medicoRepository.deleteById(id);
     }
 

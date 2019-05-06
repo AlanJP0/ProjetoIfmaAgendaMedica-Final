@@ -67,5 +67,10 @@ public class Medico {
     public int hashCode() {
         return Objects.hash(id, nome, crm, agendas);
     }
+
+    @Override
+    public String toString() {
+        return "Medico [id=" + id + ", nome=" + nome + ", crm=" + crm + ", agendas=" + agendas + "]";
+    }
 }
 
