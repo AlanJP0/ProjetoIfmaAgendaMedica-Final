@@ -1,20 +1,21 @@
 package projeto.atvifma.modelo;
 
 import javax.persistence.*;
-import projeto.atvifma.modelo.Semana.Dias;
-import java.time.LocalDateTime;
+import projeto.atvifma.modelo.semana.Dias;
+
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 
-public class agendaM {
+public class AgendaM {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Enumerated(EnumType.STRING)
     private Dias diaDaSemana;
+
 
     @ElementCollection
     @CollectionTable(name = "agenda_horarios", joinColumns = @JoinColumn(name = "agenda_id"))
@@ -49,7 +50,7 @@ public class agendaM {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        agendaM agendaM = (agendaM) o;
+        AgendaM agendaM = (AgendaM) o;
         return Objects.equals(id, agendaM.id) &&
                 diaDaSemana == agendaM.diaDaSemana &&
                 Objects.equals(horarios, agendaM.horarios);

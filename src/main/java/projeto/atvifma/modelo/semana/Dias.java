@@ -1,4 +1,4 @@
-package projeto.atvifma.modelo.Semana;
+package projeto.atvifma.modelo.semana;
 
 public enum Dias {
 

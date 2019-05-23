@@ -2,7 +2,6 @@ package projeto.atvifma.modelo;
 
 import java.util.*;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "medico")
@@ -24,7 +21,7 @@ public class Medico {
     private String crm;
 
     @OneToMany @JoinColumn(name = "medico_id")
-    private List<agendaM> agendas = new ArrayList<>();
+    private List<AgendaM> agendas = new ArrayList<>();
 
 
 
