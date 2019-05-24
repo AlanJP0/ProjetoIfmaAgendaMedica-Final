@@ -14,10 +14,13 @@ import java.util.List;
 public class PacienteServico {
 
     private final PacienteRepositorio pacienteRepositorio;
+    private final GenericoServico<Paciente> genericoServico;
 
     @Autowired
     public PacienteServico(PacienteRepositorio pacienteRepository) {
         this.pacienteRepositorio = pacienteRepository;
+
+        genericoServico = new GenericoServico<>(pacienteRepository);
     }
 
     @Transactional(readOnly = true)
@@ -49,5 +52,10 @@ public class PacienteServico {
         BeanUtils.copyProperties(paciente, pacienteSalvo, "id");
 
         return  pacienteSalvo;
+    }
+
+    @Transactional(readOnly = true)
+    public List<Paciente> todas() {
+        return genericoServico.todos();
     }
 }

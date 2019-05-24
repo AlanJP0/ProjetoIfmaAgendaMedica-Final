@@ -6,13 +6,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import projeto.atvifma.controle.dto.PacienteDTO;
+import projeto.atvifma.controle.resposta.Erro;
 import projeto.atvifma.controle.resposta.Resposta;
+import projeto.atvifma.controle.validacao.Validacao;
 import projeto.atvifma.modelo.Consulta;
+import projeto.atvifma.modelo.Paciente;
 import projeto.atvifma.servico.ConsultaServico;
 import projeto.atvifma.util.PropriedadesUtil;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/consultas")
@@ -74,5 +79,15 @@ public class ConsultaControle {
         resposta.setDados(consulta);
 
         return resposta;
+    }
+
+
+    private boolean existe(List<Erro> erros) {
+        return Objects.nonNull( erros ) &&  !erros.isEmpty();
+    }
+
+    private List<Erro> getErros(PacienteDTO dto) {
+        Validacao<PacienteDTO> validacao = new Validacao<>();
+        return validacao.valida(dto);
     }
 }
